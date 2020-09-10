@@ -48,8 +48,8 @@ class NumPad extends React.Component {
               <Key addToExpression={this.props.addToExpression} char="." width={4}/>
             </div>
           </div>
-          <div className="align-self-center col-md-3 col-lg-3 col-3 col-sm-3 debug padding-0">
-          <Key addToExpression={this.props.equal} char="=" width={12}/>
+          <div className="col-md-3 col-lg-3 col-3 col-sm-3 debug padding-0">
+            <button id="equals" onClick={this.props.equal} className="btn btn-primary btn-block h-100">=</button>
           </div>
           
         </div>
