@@ -5,3 +5,6 @@
 .equal {
     height: 100px !important;
 }
+.debug {
+    background-color: brown;
+}

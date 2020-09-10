@@ -1,10 +1,23 @@
 import React from 'react';
-import Key from './key.jsx'
+import Key from './key.jsx';
 
+import $ from 'jquery';
 class NumPad extends React.Component {
+  setButtonsColors(){
+    $('#clear').removeClass('btn-dark').addClass('btn-danger')
+    $('#add').removeClass('btn-dark').addClass('btn-secondary')
+    $('#subtract').removeClass('btn-dark').addClass('btn-secondary')
+    $('#multiply').removeClass('btn-dark').addClass('btn-secondary')
+    $('#divide').removeClass('btn-dark').addClass('btn-secondary')
+    $('#equals').removeClass('btn-dark').addClass('btn-primary')
+  }
+  componentDidMount(){
+    this.setButtonsColors();
+  }
   render() {
     return (
-      <div className="row">
+     <div className="container">
+        <div className="row">
            <div className="col-md-12 col-lg-12 col-sm-12 col-12">
         <div className="row">
           <Key addToExpression={this.props.clear} char="AC" width={6}/>
@@ -43,6 +56,7 @@ class NumPad extends React.Component {
       </div>
    
       </div>
+     </div>
     );
   }
 }

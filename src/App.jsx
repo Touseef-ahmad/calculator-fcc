@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import NumPad from './Pad/num_pad.jsx';
-import Display from './display/display.jsx'
+import Display from './display/display.jsx';
 //bootstrap imports
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -15,6 +15,7 @@ class App extends React.Component {
     this.clear = this.clear.bind(this)
     this.evaluate = this.evaluate.bind(this)
   }
+  
   evaluate(){
     let result = eval(this.state.expression)
     this.setState({expression : result})
@@ -46,8 +47,13 @@ class App extends React.Component {
     const expression = this.state.expression;
     return (
       <div className="container">
+        <div className="row">
+        <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-8 offset-2 col-sm-8 offset-sm-2">
         <Display result={result} expression={expression}/>
         <NumPad addToExpression={this.addToExpression} equal={this.evaluate} clear={this.clear}/>
+   
+        </div>
+    </div>
       </div>
     );
   }
