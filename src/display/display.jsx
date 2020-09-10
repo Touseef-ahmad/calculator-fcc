@@ -3,17 +3,13 @@ import './styles.css'
 class Display extends React.Component {
     render() {
         return (
-            <div id="display">
-                <div className="row">
+            <div id="display-container">
+                <div className="row" id="display">
                     <div className="col-12 col-md-12 col-sm-12">
-                        <p>{this.props.expression}</p>
+                        <h2>{this.props.expression}</h2>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-12 col-md-12 col-sm-12">
-                        <h2>{this.props.result}</h2>
-                    </div>
-                </div>
+                
             </div>
         );
     }

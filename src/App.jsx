@@ -10,36 +10,34 @@ class App extends React.Component {
     super(props);
     this.state = {
       expression: '0', 
-      result : '0',
     }
     this.addToExpression = this.addToExpression.bind(this)
     this.clear = this.clear.bind(this)
     this.evaluate = this.evaluate.bind(this)
   }
   evaluate(){
-    const result = eval(this.state.expression)
-    this.setState({result})
-    this.setState(state => ({
-      expression : state.expression + " = " + result
-    }))
+    let result = eval(this.state.expression)
+    this.setState({expression : result})
   }
   clear(){
     this.setState(state => ({
       expression : '0',
-      result:'0'
     }))
   }
 
   addToExpression(char){
     let expression = this.state.expression;
-    if(/=/.test(expression)){this.clear()}
     if(char === 'X'){char='*'}
-    if(/\D/.test(char) && /\D$/.test(expression) && char !== '.'){ // if input is non-digit
+    if(/\D/.test(char) && /\D$/.test(expression) && char !== '.'){
+      if(char !== '-'){
+        this.setState({expression:expression.replace(/\D$/ , char)})
+      }
       
-      this.setState({expression : expression.replace(/^0/,'').replace(/\D$/ , char)})
-    }else{
+    }
+    else if(char === '.' && /\.\d*$/.test(expression)){}
+    else{
     this.setState(state => ({
-      expression : state.expression.replace(/^0/,'')+char
+      expression : state.expression.toString().replace(/^0/,'')+char
     }))
     }
   }
